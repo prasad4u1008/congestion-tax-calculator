@@ -20,7 +20,7 @@ public class CongestionTaxService {
     CongestionTaxConfigLoader congestionTaxConfigLoader;
 
     @Autowired
-    CongestionTaxCalculator congestionTaxCalculator;
+    CongestionTaxCalculator congestionTaxCompute;
 
     /**
      * Handle tax computation
@@ -30,7 +30,7 @@ public class CongestionTaxService {
      */
     public CongentionTaxResponse computeTax(CongestionTaxRequest request, String config)  {
         CityConfiguration cityTaxConfiguration = congestionTaxConfigLoader.getConfig(config);
-        Vehicle vehicle = congestionTaxCalculator.getVehicle(request.getVehicle());
-        return new CongentionTaxResponse(request.getVehicle(), congestionTaxCalculator.getTax(vehicle, request.getDateEntries() , cityTaxConfiguration));
+        Vehicle vehicle = congestionTaxCompute.getVehicle(request.getVehicle());
+        return new CongentionTaxResponse(request.getVehicle(), congestionTaxCompute.getTax(vehicle, request.getDateEntries() , cityTaxConfiguration));
     }
 }

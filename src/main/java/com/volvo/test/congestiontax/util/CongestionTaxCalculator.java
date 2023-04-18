@@ -36,7 +36,7 @@ public class CongestionTaxCalculator {
     public int getTax(Vehicle vehicle, Date[] dates, CityConfiguration config)
     {
         final int[] totalFee = {0};
-        if (dates.length == 0) {
+        if (dates.length <= 0) {
             return totalFee[0];
         }
 

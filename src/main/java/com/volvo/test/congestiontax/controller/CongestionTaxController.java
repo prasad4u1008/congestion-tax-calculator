@@ -48,19 +48,17 @@ public class CongestionTaxController {
     @PostMapping(value = "/api/computeTax", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CongentionTaxResponse> computeTax(@RequestBody CongestionTaxRequest taxRequest, @RequestParam String city) {
         long start = new Date().getTime();
-        logger.debug("Incoming request started at: {}", start);
+        logger.debug("Request started at: {}", start);
         CongentionTaxResponse result = congestionTaxService.computeTax(taxRequest, city);
         long end = new Date().getTime();
-        logger.debug("Incoming request ended at: {}", end);
+        logger.debug("Request ended at: {}", end);
         logger.info("Processing time {} ms", end - start);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
    
     /**
-     * Post /api/computeTax
-     * @param taxRequest taxRequest
-     * @param city as config city name
-     * @return taxResponse
+     * GET Method with default Welcome Page
+     * @return String
      * @throws IOException 
      */
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
